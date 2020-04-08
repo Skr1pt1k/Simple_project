@@ -1,0 +1,48 @@
+.auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__container {
+    width: max-content;
+    border: 1px solid #eaeaea;
+    padding: 50px;
+    border-radius: 10px;
+  }
+  &__header {
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  &__col {
+    padding: 0;
+  }
+}
+
+.form-auth {
+  &__text {
+    font-weight: bold;
+    font-size: 12px;
+    color: #6B6C6F;
+  }
+  &__error {
+    color: red;
+    font-size: 13px;
+  }
+  &__button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 35px;
+    background: #E41E26;
+    border-radius: 20px;
+    border-color: #E41E26;
+    padding: 5px 30px 5px 30px;
+    font-size: 14px !important;
+    &:hover {
+      transition: all .4s linear;
+      background-color: #E41E26;
+      opacity: 0.5;
+    }
+  }
+}
