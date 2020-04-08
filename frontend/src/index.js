@@ -1,17 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { createStore, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import { Provider } from 'react-redux'
+import { render } from 'react-dom'
+import { createLogger } from 'redux-logger'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+import App from './containers/App'
+import { rootWatcherSaga } from './store/combineSagas'
+import reducer from './store/combineReducers'
+
+import './assets/scss/main.scss'
+
+const sagaMiddleware = createSagaMiddleware()
+const logger = createLogger({ diff: true, collapsed: true, duration: true })
+
+const store = createStore(
+  reducer,
+  applyMiddleware(sagaMiddleware, logger)
+)
+
+sagaMiddleware.run(rootWatcherSaga)
+
+render(
+  <Provider store={ store }>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
   document.getElementById('root')
-);
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+)
