@@ -1,6 +1,12 @@
 .log-out__text {
   margin-left: 25px;
-  text-decoration: underline;
+  text-decoration: underline!important;
+  cursor: pointer;
+}
+
+.navbar__user {
+  font-weight: 600;
+  color: #fff!important;
 }
 
 .navbar-text {

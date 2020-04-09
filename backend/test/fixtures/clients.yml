@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  project: MyString
+  departament: 
+  estimate: 1
+  budget: 
+  start_date: 2020-04-08
+
+two:
+  name: MyString
+  project: MyString
+  departament: 
+  estimate: 1
+  budget: 
+  start_date: 2020-04-08
