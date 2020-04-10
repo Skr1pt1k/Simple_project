@@ -5,6 +5,12 @@ import {
   CLIENT_CREATE_REQUEST,
   CLIENT_CREATE_SUCCESS,
   CLIENT_CREATE_FAILURE,
+  CLIENT_UPDATE_REQUEST,
+  CLIENT_UPDATE_SUCCESS,
+  CLIENT_UPDATE_FAILURE,
+  CLIENT_DELETE_REQUEST,
+  CLIENT_DELETE_SUCCESS,
+  CLIENT_DELETE_FAILURE,
 } from './actions'
 
 const initialState = {
@@ -25,6 +31,18 @@ export default (state = initialState, { type, payload }) => {
   case CLIENT_CREATE_SUCCESS:
     return { ...state, item: payload, fetching: false }
   case CLIENT_CREATE_FAILURE:
+    return { ...state, fetching: false }
+  case CLIENT_UPDATE_REQUEST:
+    return { ...state, fetching: true }
+  case CLIENT_UPDATE_SUCCESS:
+    return { ...state, item: payload, fetching: false }
+  case CLIENT_UPDATE_FAILURE:
+    return { ...state, fetching: false }
+  case CLIENT_DELETE_REQUEST:
+    return { ...state, fetching: true }
+  case CLIENT_DELETE_SUCCESS:
+    return { ...state, fetching: false }
+  case CLIENT_DELETE_FAILURE:
     return { ...state, fetching: false }
   default:
     return state

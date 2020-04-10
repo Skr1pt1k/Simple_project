@@ -11,3 +11,32 @@ body > #root > div {
 ::-webkit-input-placeholder {
   font-size: 13px;
 }
+
+.clients-table {
+  margin-top: 10px;
+  overflow: auto;
+  &__history {
+    text-decoration: underline;
+    color: #0000EE;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+  }
+}
+
+.no-border {
+  border: 0!important
+}
+
+.flex {
+  display: flex;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+.m-l-12 {
+  margin-left: 12px;
+}

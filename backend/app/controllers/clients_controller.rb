@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ClientsController < ApplicationController
-  expose :clients, -> { Client.all }
+  expose :clients, -> { Client.includes(:departament, :history) }
   expose :client
 
   def index
@@ -9,7 +9,6 @@ class ClientsController < ApplicationController
   end
 
   def create
-    binding.pry
     if client.save
       return render json: { message: 'Created successfully' }, status: :created
     end
@@ -38,7 +37,7 @@ class ClientsController < ApplicationController
       :estimate,
       :budget,
       :start_date,
-      departament_attributes: %i[name]
+      :departament_id
     )
   end
 end
