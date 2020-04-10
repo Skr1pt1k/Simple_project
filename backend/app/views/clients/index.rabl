@@ -10,3 +10,7 @@ end
 node :last_message do |c|
   c.history&.actions&.last&.action
 end
+
+child :history do
+  attributes :id
+end
