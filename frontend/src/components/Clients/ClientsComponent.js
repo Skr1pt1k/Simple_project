@@ -10,7 +10,7 @@ const ClientsComponent = (props) => {
 
   const handleChange = (event) => {
     event.persist()
-    if (event.target.type === 'select') {
+    if (event.target.type === 'select-one') {
       const index = event.target.selectedIndex
       const el = event.target.childNodes[index]
       const option =  el.getAttribute('id')

@@ -8,7 +8,6 @@ const Histories = (props) => {
 
   const { getHistory } = props
 
-
   useEffect(() => {
     const { id } = props.match.params
 
