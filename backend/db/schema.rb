@@ -10,10 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_163954) do
+ActiveRecord::Schema.define(version: 2020_04_09_161220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actions", force: :cascade do |t|
+    t.date "date"
+    t.string "action"
+    t.bigint "history_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["history_id"], name: "index_actions_on_history_id"
+    t.index ["user_id"], name: "index_actions_on_user_id"
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.string "project"
+    t.integer "estimate"
+    t.integer "budget"
+    t.date "start_date"
+    t.bigint "departament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["departament_id"], name: "index_clients_on_departament_id"
+  end
+
+  create_table "departaments", force: :cascade do |t|
+    t.string "name"
+    t.bigint "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_departaments_on_client_id"
+  end
+
+  create_table "histories", force: :cascade do |t|
+    t.bigint "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_histories_on_client_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"

@@ -14,8 +14,10 @@ gem 'puma', '~> 3.11'
 gem 'dotenv-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'decent_exposure', '3.0.0'
-gem 'rack-cors'
+gem "rack-cors", ">= 1.0.4"
 gem 'jwt'
+gem 'rabl'
+gem 'oj'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
