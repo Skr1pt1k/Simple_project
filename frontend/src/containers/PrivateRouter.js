@@ -16,7 +16,7 @@ const PrivateRoute = ({ component: Component, session, ...rest }) => (
               <Component { ...props } />
             </>
             ) : null
-        : window.location.pathname !== '/' ?
+        : window.location.pathname !== '/' && session.fetching === false ?
           <Redirect to={ { pathname: '/', state: { from: props.location } } } /> : session.fetching === false ?
             <Component { ...props } /> : null }
   />

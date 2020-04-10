@@ -5,4 +5,6 @@ class Client < ApplicationRecord
 
   has_one :departament
   has_one :history
+
+  after_create :create_history
 end

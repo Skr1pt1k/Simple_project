@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Table, Media  } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 import TrashIcon from '../../assets/icons/trash.png'
 import PencilIcon from '../../assets/icons/pencil.png'
@@ -40,9 +41,8 @@ const ClientsTable = (props) => {
 
   const renderTableData = () => {
     return clients.map((client) => {
-      const { id, name, project, budget, estimate, start_date, last_message } = client //destructuring
+      const { id, name, project, budget, estimate, start_date, last_message, history } = client //destructuring
       const departament  = client.departament[0]
-
       return (
         <tr key={ id }>
           <td className='no-border'>
@@ -58,7 +58,8 @@ const ClientsTable = (props) => {
           <td>{estimate}</td>
           <td>{budget}</td>
           <td>{start_date}</td>
-          <td className='clients-table__history'>{ !last_message ? 'Nothing yet' : last_message }</td>
+
+          <td className='clients-table__history'><Link to={ `/history/${history.id}` } >{ !last_message ? 'Nothing yet' : last_message }</Link></td>
         </tr>
 
       )

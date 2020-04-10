@@ -17,4 +17,7 @@ export default {
   Departaments: {
     get: () => requestManager.get('/departaments')
   },
+  History: {
+    get: id => requestManager.get(`/histories/${id}`)
+  }
 }
