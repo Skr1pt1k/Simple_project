@@ -1,0 +1,42 @@
+version: '3.6'
+
+services:
+  postgres:
+    image: postgres:11.1
+    volumes:
+      - ./tmp/log:/var/log/postgresql
+      - ./tmp/db:/var/lib/postgresql/data
+    env_file:
+      - .env
+    ports:
+      - 54321:5432
+  backend:
+    depends_on:
+      - postgres
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        APP_PATH: ${APP_PATH}
+    env_file:
+      - .env
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - ./backend:/home/sergiy/backend
+    ports:
+      - 3000:3000
+    stdin_open: true
+    tty: true
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        APP_PATH: ${APP_PATH}
+    env_file:
+      - .env
+    command: yarn start:dev
+    volumes:
+      - ./frontend:/home/sergiy/frontend
+    ports:
+      - 8080:8080
