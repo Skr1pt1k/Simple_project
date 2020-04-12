@@ -66,7 +66,6 @@ const ClientsAddForm = (props) => {
         />
       </FormGroup>
       <Button className='form-clients__button'>Create</Button>
-      { values.created ? <span className='form-clients__created'>Created!</span> : null}
     </Form>
   )
 }

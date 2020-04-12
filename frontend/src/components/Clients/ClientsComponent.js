@@ -24,17 +24,14 @@ const ClientsComponent = (props) => {
   const handleSubmit = (event) => {
     if (event) event.preventDefault()
     handleCreateRequest(values)
-    setValues({created: true})
-    setTimeout(() => {
-      setValues({})
-    }, 1200)
+    setValues({})
   }
 
   return (
     <div className='clients'>
       <Container>
         <Row>
-          <Col>
+          <Col> 
             <ClientsAddForm values={ values } handleSubmit={ handleSubmit } handleChange={ handleChange } departaments={ departaments } />
             <ClientsTable handleUpdate={ handleUpdateRequest } handleDelete={ handleDeleteRequest } clients={ clients } departaments={ departaments } />
           </Col>

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 collection clients, object_root: false
-attributes :id, :name, :project, :estimate, :budget, :start_date
+attributes :id, :name, :project, :estimate, :budget, :start_date, :default_color
 
 node :departament do |c|
   Departament.where(id: c.departament_id)

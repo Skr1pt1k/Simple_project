@@ -1,7 +1,7 @@
 import {
   HISTORY_GET_REQUEST,
   HISTORY_GET_SUCCESS,
-  HISTORY_GET_FAILURE,
+  HISTORY_GET_FAILURE
 } from './actions'
 
 const initialState = {
@@ -17,6 +17,7 @@ export default (state = initialState, { type, payload }) => {
     return { ...state, items: payload.data, fetching: false }
   case HISTORY_GET_FAILURE:
     return { ...state, fetching: false }
+
   default:
     return state
   }

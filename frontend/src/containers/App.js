@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Route, Switch, Router } from 'react-router-dom'
+import { NotificationContainer } from 'react-notifications'
 import { sessionRestoreRequest } from '../store/auth/actions'
 import { connect } from 'react-redux'
 import LoginPage from '../containers/Login/Login'
@@ -17,6 +18,7 @@ const App = (props) => {
 
   return (
     <Router history={ history }>
+      <NotificationContainer />
       <Switch>
         <PrivateRoute path="/" exact component={ LoginPage } />
         <PrivateRoute path="/clients" exact component={ ClientsPage } />

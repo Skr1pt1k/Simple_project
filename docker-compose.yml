@@ -21,8 +21,6 @@ services:
     env_file:
       - .env
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
-    volumes:
-      - ./backend:/home/sergiy/backend
     ports:
       - 3000:3000
     stdin_open: true
@@ -33,10 +31,10 @@ services:
       dockerfile: Dockerfile
       args:
         APP_PATH: ${APP_PATH}
+    depends_on:
+      - backend
     env_file:
       - .env
     command: yarn start:dev
-    volumes:
-      - ./frontend:/home/sergiy/frontend
     ports:
       - 8080:8080

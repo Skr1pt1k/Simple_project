@@ -1,8 +1,9 @@
 import React from 'react'
 import { Modal, ModalBody,Form, FormGroup, Label, Input, Button } from 'reactstrap'
+import { SketchPicker } from 'react-color';
 
 const ClientsEditModal = (props) => {
-  const { modalOpened, toggleModal, client, departaments, handleChange, handleUpdateModal} = props
+  const { modalOpened, toggleModal, client, departaments, handleChange, handleUpdateModal, handleChangeColor} = props
 
   return (
     <Modal
@@ -74,6 +75,13 @@ const ClientsEditModal = (props) => {
               placeholder="Start Date"
             />
           </FormGroup>
+         <FormGroup >
+           <Label>Choose color of the client raw:</Label>
+           <SketchPicker
+             color={ client.default_color }
+             onChangeComplete={ handleChangeColor }
+           />
+         </FormGroup>
           <Button>Save</Button>
         </Form>
       </ModalBody>

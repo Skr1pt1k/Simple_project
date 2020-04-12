@@ -30,13 +30,26 @@ body > #root > div {
   border: 0!important
 }
 
-.flex {
+.table-media {
   display: flex;
+  position: absolute;
+  left: -80px;
+  &-hidden {
+    visibility: hidden;
+  }
+  &-visible {
+    visibility: visible;
+  }
+}
+
+tr {
+  cursor: pointer;
 }
 
 .c-pointer {
   cursor: pointer;
 }
+
 .m-l-12 {
   margin-left: 12px;
 }
