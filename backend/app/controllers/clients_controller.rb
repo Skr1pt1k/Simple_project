@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ClientsController < ApplicationController
-  expose :clients, -> { Client.includes(:departament, :history) }
+  expose :clients, -> { Client.includes(:departament, :history).order(created_at: :desc) }
   expose :client
 
   def index
@@ -37,7 +37,8 @@ class ClientsController < ApplicationController
       :estimate,
       :budget,
       :start_date,
-      :departament_id
+      :departament_id,
+      :default_color
     )
   end
 end

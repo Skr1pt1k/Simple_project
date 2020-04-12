@@ -34,7 +34,8 @@ const Clients = (props) => {
       estimate: params.estimate,
       budget: params.budget,
       start_date: params.start_date,
-      departament_id: params.departamentId
+      departament_id: params.departamentId,
+      default_color: params.default_color
     }
     updateClient(client, params.id)
   }

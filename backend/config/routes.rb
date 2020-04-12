@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :clients, only: %i[index create update destroy]
   resources :departaments, only: %i[index]
   resources :histories, only: %i[show]
+  resources :actions, only: %i[create]
 end

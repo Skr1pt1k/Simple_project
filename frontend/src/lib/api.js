@@ -19,5 +19,8 @@ export default {
   },
   History: {
     get: id => requestManager.get(`/histories/${id}`)
-  }
+  },
+  Action: {
+    create: params => requestManager.post('/actions/', params)
+  },
 }

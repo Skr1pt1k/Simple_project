@@ -1,5 +1,6 @@
 import { takeLatest, call, put } from 'redux-saga/effects'
 import * as actions from './actions'
+import notifications from '../../lib/notifications'
 
 import Api from '../../lib/api'
 
@@ -22,6 +23,7 @@ export default function* watcherSaga() {
     try {
       const response = yield call(Api.Client.create, data)
       yield put(actions.clientCreateSuccess(response))
+      notifications.createNotification('create-success')
       yield put(actions.clientsGetRequest())
     } catch (error) {
       yield put(actions.clientCreateFailure(error))
@@ -33,6 +35,7 @@ export default function* watcherSaga() {
       const response = yield call(Api.Client.update, payload)
 
       yield put(actions.clientUpdateSuccess(response))
+      notifications.createNotification('update-success')
       yield put(actions.clientsGetRequest())
     } catch (error) {
       yield put(actions.clientUpdateFailure(error))
@@ -43,6 +46,7 @@ export default function* watcherSaga() {
     try {
       const response = yield call(Api.Client.delete, payload)
       yield put(actions.clientDeleteSuccess(response))
+      notifications.createNotification('delete-success')
       yield put(actions.clientsGetRequest())
     } catch (error) {
       yield put(actions.clientDeleteFailure(error))

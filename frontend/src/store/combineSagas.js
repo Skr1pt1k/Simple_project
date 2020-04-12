@@ -4,9 +4,10 @@ import authSaga from './auth/sagas'
 import clientsSaga from './clients/sagas'
 import departamentsSaga from './departaments/sagas'
 import historiesSaga from './histories/sagas'
+import actionsSaga from './actions/sagas'
 
 export function* rootWatcherSaga() {
   yield all([
-    fork(authSaga), fork(clientsSaga), fork(departamentsSaga), fork(historiesSaga)
+    fork(authSaga), fork(clientsSaga), fork(departamentsSaga), fork(historiesSaga), fork(actionsSaga)
   ])
 }

@@ -1,10 +1,31 @@
-.clients {
+.history {
   &__form {
     margin-top: 50px;
   }
 }
 
-.form-clients {
+.histories__header {
+  margin-top: 30px;
+}
+
+.header-history {
+  display: flex;
+  justify-content: flex-start;
+  &__block {
+    margin-right: 50px;
+  }
+  &__span {
+    font-size: 20px;
+    &-bold {
+      font-weight: 500;
+    }
+    &-left {
+      margin-left: 18px;
+    }
+  }
+}
+
+.form-history {
   display: flex;
   &__group {
     margin-right: 10px;
@@ -24,18 +45,7 @@
 
 
 @media only screen and (max-width: 768px) {
-  .form-clients {
+  .form-history {
     display: block;
-    &__group-size {
-      width: unset;
-    }
-  }
-}
-
-@media (max-width: 992px) and (min-width: 768px) {
-  .form-clients {
-    &__group-size {
-      width: 350px;
-    }
   }
 }
