@@ -11,6 +11,10 @@ node :last_message do |c|
   c.history&.actions&.last&.action
 end
 
+node :manager do |c|
+  User.where(id: c.history&.actions&.last&.user_id)
+end
+
 child :history do
   attributes :id
 end

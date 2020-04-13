@@ -22,7 +22,7 @@ body > #root > div {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 200px;
+    max-width: 440px;
   }
 }
 
@@ -33,7 +33,8 @@ body > #root > div {
 .table-media {
   display: flex;
   position: absolute;
-  left: -80px;
+  height: 20px;
+  left: -95px;
   &-hidden {
     visibility: hidden;
   }
@@ -52,4 +53,12 @@ tr {
 
 .m-l-12 {
   margin-left: 12px;
+}
+
+.m-r-12 {
+  margin-right: 12px;
+}
+
+.container {
+  max-width: 1400px
 }

@@ -3,5 +3,5 @@
 class Action < ApplicationRecord
   belongs_to :history
 
-  has_one :user
+  belongs_to :user
 end

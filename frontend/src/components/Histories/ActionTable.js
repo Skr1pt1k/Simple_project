@@ -10,7 +10,8 @@ const HistoryTable = (props) => {
       return (
         <tr key={ action.id }>
           <td>{action.date}</td>
-          <td>{action.action}</td>
+          <td>{action.user.name}</td>
+          <td className='action__td'>{action.action}</td>
         </tr>
       )
     })
@@ -21,6 +22,7 @@ const HistoryTable = (props) => {
       <thead>
         <tr>
           <th>Date</th>
+          <th>Manager</th>
           <th>Action</th>
         </tr>
       </thead>

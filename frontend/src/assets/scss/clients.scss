@@ -22,6 +22,19 @@
   }
 }
 
+.twitter-picker {
+  left: -94px;
+  bottom: -40px;
+  visibility: visible;
+  &-hidden {
+    visibility: hidden
+  }
+}
+
+.client-td__bold {
+  font-weight: bold;
+}
+
 
 @media only screen and (max-width: 768px) {
   .form-clients {

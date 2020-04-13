@@ -5,6 +5,9 @@ attributes :id
 
 child :ordered_actions, object_root: false do
   attributes :id, :action, :date
+  child :user do
+    attributes :id, :name
+  end
 end
 
 child :client do
