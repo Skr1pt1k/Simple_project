@@ -29,8 +29,8 @@ const ClientsAddForm = (props) => {
         />
       </FormGroup>
       <FormGroup className='form-clients__group form-clients__group-size'>
-        <Input className='form-clients__select' type="select" onChange={ (e) => handleChange(e) } defaultValue='Departaments'>
-          <option disabled >Departaments</option>
+        <Input className='form-clients__select' type="select" onChange={ (e) => handleChange(e) } defaultValue='' required>
+          <option disabled value=''>Departaments</option>
           {departaments.map(d =>
             <option id = { d.id } key={ d.id } value={ d.name } >{d.name}</option>
           )};

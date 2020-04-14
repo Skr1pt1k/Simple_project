@@ -3,12 +3,12 @@
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 999999;
-  width: 320px;
+  width: 300px;
   padding: 0px 15px;
   max-height: calc(100% - 30px);
   overflow-x: hidden;
   overflow-y: auto;
+  z-index: 9999;
 }
 
 .notification {

@@ -31,9 +31,10 @@ const HistoryAddForm = (props) => {
           autoComplete="off"
         />
       </FormGroup>
-      <FormGroup className='form-history__group'>
+      <FormGroup className='form-history__group form-history__group-full '>
         <Input
-          type="text"
+          type="textarea"
+          resize='vertical'
           name="action"
           onChange={ handleChange }
           value={ action || '' }

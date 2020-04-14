@@ -13,12 +13,40 @@ const ClientsTable = (props) => {
   const [trToogleOpened, changeStatusOfTr] = useState({status: true, clientId: ''})
   const [clientValues, changeClientValues] = useState({})
   const [twitterColorPickerOpened, changeStatusOfTwitterColorPicker] = useState({status: false, clientId: ''})
+  const [hoverRef, isHovered] = useHover();
 
   const { clients, handleDelete, handleUpdate, departaments } = props
 
   const toogleModal = (client) => {
     changeStatusOfModal(!modalOpened)
     changeClientValues(client)
+  }
+
+  function useHover() {
+    const [value, setValue] = useState(false);
+
+    const ref = useRef(null);
+
+    const handleMouseOver = () => setValue(true);
+    const handleMouseOut = () => setValue(false);
+
+    useEffect(
+      () => {
+        const node = ref.current;
+        if (node) {
+          node.addEventListener('mouseover', handleMouseOver);
+          node.addEventListener('mouseout', handleMouseOut);
+
+          return () => {
+            node.removeEventListener('mouseover', handleMouseOver);
+            node.removeEventListener('mouseout', handleMouseOut);
+          };
+        }
+      },
+      [ref.current] // Recall only if ref changes
+    );
+
+    return [ref, value];
   }
 
   const handleChange = (event) => {
@@ -50,18 +78,24 @@ const ClientsTable = (props) => {
     changeStatusOfModal(!modalOpened)
   }
 
+  const medaiOnHoverOut = (id) => {
+    if(!isHovered) {
+      changeStatusOfTr({status: true, clientId: id })
+    }
+  }
+
   const renderTableData = () => {
     return clients.map((client) => {
       const { id, name, project, budget, estimate, start_date, last_message, history, default_color, manager } = client
       const departament  = client.departament[0]
       return (
-        <tr key={ id } onMouseOver={() => changeStatusOfTr({status: false, clientId: id })} style={{backgroundColor: default_color}}>
+        <tr key={ id } onMouseOut={() => medaiOnHoverOut(id)} onMouseOver={() => changeStatusOfTr({status: false, clientId: id })} style={{backgroundColor: default_color}}>
           <td>
             <div className={trToogleOpened.status ? 'table-media table-media-hidden' : trToogleOpened.clientId === id  ? 'table-media table-media-visible' : 'table-media table-media-hidden'}>
               <Media onClick={(client) => handleChangeTwitterColorPicker(id)} className='m-l-12 c-pointer' src={ PaintIcon } width='20px' />
               <Media onClick={ () => toogleModal(client) } className='m-l-12 c-pointer' src={ PencilIcon } width='20px' />
               <Media onClick={ () => handleDelete(id) } className='m-l-12 c-pointer' src={ TrashIcon } width='20px' />
-              <div>
+              <div ref={hoverRef}>
                 <TwitterPicker
                   color={clientValues.default_color}
                   colors={['#CAF7AE', '#FFFFC3', '#E6FFF9', '#ACC7ED', '#F4AD9C', '#DEACC3', '#E5E5E5', '#FFFFFF']}
