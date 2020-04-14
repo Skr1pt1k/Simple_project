@@ -1,7 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const isDevelopment = process.env.NODE_ENV === 'development'
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 require('dotenv').config()
@@ -15,8 +14,9 @@ module.exports = {
     ]
   },
   output: {
-    filename: '[name].js',
-    publicPath: '/'
+    path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js',
+
   },
   devServer: {
     host: '0.0.0.0',
@@ -63,11 +63,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        devServer: true,
-      },
-    }),
     new CopyWebpackPlugin([
       { from: 'src/assets/images', to: 'assets/images' },
     ]),
@@ -78,7 +73,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       filename: './index.html',
-      template: './src/index.html',
+      template: './public/index.html',
     }),
   ],
   externals: {
