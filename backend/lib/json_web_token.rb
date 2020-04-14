@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class JsonWebToken
-  SECRET_KEY = Rails.application.credentials.secret_key_base
+  SECRET_KEY = ENV['SECRET_KEY_BASE']
 
   def self.encode(payload)
     JWT.encode(payload, SECRET_KEY)
