@@ -1,0 +1,19 @@
+{
+    "activitycontinuation": {
+    "apps": [
+      "S6E7873CYT.ae.gov.mol.tadbeer"
+    ]
+  },
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "S6E7873CYT.ae.gov.mol.tadbeer",
+                "paths": [
+                    "NOT /_/*",
+                    "/*"
+                ]
+            }
+        ]
+    }
+}
